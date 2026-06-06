@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* Custom theme declarations for beautiful font pairings */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Base custom styles to look pristine and theme-accurate */
+html, body {
+  @apply bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen font-sans;
+}
+
+/* Custom Animation classes */
+.animate-flip-cell {
+  animation: flip-cell 0.6s ease-in-out forwards;
+}
+
+.animate-cell-reveal {
+  animation: cell-reveal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-row-wobble {
+  animation: row-wobble 0.25s ease-in-out;
+}
+
+.animate-bounce-short {
+  animation: bounce-short 0.15s ease-out;
+}
+
+.animate-float-particle {
+  animation: float-particle 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.press-effect:active {
+  transform: scale(0.95);
+  filter: brightness(0.9);
+}
+
+/* Keyframe specifications */
+@keyframes flip-cell {
+  0% {
+    transform: rotateX(0deg);
+  }
+  45% {
+    transform: rotateX(90deg);
+  }
+  55% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes cell-reveal {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes row-wobble {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  15%, 45%, 75% {
+    transform: translateX(-6px);
+  }
+  30%, 60%, 90% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes bounce-short {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Custom scrollbars for grid views */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 dark:bg-slate-800 rounded-full;
+}
